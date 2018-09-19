@@ -50,7 +50,8 @@ class ScoreCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.text = text
-        label.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        label.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        label.textAlignment = .right
         return label
     }
     
