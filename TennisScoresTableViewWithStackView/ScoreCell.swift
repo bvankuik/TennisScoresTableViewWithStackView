@@ -28,9 +28,7 @@ class ScoreCell: UITableViewCell {
         if let result = self.result {
             self.textLabel?.text = result.name
             result.scores.forEach { score in
-                let label = UILabel()
-                label.font = UIFont.preferredFont(forTextStyle: .body)
-                label.text = String(describing: score)
+                let label = self.makeLabel(with: String(describing: score))
                 self.arrangedSubviews.append(label)
                 self.scoreStackView.addArrangedSubview(label)
             }
@@ -41,13 +39,19 @@ class ScoreCell: UITableViewCell {
         if let rounds = self.rounds {
             self.textLabel?.text = "Final"
             (1 ... rounds).forEach { i in
-                let label = UILabel()
-                label.font = UIFont.preferredFont(forTextStyle: .body)
-                label.text = String(describing: i)
+                let label = self.makeLabel(with: String(describing: i))
                 self.arrangedSubviews.append(label)
                 self.scoreStackView.addArrangedSubview(label)
             }
         }
+    }
+    
+    private func makeLabel(with text: String) -> UILabel {
+        let label = UILabel()
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.text = text
+        label.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        return label
     }
     
     override func prepareForReuse() {

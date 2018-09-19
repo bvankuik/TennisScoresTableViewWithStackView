@@ -43,6 +43,8 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     override func viewDidLoad() {
+        self.title = globalTournament.name
+        
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.register(ScoreCell.self, forCellReuseIdentifier: "ScoreCell")
         self.tableView.dataSource = self
